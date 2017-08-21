@@ -18,6 +18,7 @@ $ serverless webpack invoke --function sayHello
 ```
 
 **Config Mongo & Amazon AWS**
+
 In order to use MongoDB you must create a file called env.yml which sets environment variables in your service provider. Then just provide the credentials there like below:
 ```
 MONGO_URL: mongodb://user:password@server:port/databaseName
