@@ -1,0 +1,24 @@
+service: serverless-boilerplate
+provider:
+  name: aws
+  runtime: nodejs4.3
+  timeout: 60
+  region: us-east-1
+  profile: serverless-boilerplate
+  environment: ${file(env.yml)}
+
+plugins:
+  - serverless-webpack
+
+functions:
+  sayHello:
+    handler: handler.sayHello
+    events:
+      - schedule: rate(3 minutes)
+      - enabled: true
+
+custom:
+  # stage: "${opt:stage, self:provider.stage}"
+  webpack: ./webpack.config.js
+  webpackIncludeModules:
+    packagePath: './package.json'
